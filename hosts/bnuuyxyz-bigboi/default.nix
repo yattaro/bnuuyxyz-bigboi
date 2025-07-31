@@ -21,7 +21,17 @@
 
   services.openssh = {
     enable = true;
-    settings.PermitRootLogin = "no";
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
+  };
+
+  services.fail2ban = {
+    enable = true;
+    maxretry = 10;
+    bantime = "12h";
   };
 
   system.stateVersion = "23.11";
