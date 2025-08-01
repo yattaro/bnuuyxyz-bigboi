@@ -17,6 +17,7 @@
           ./hosts/bnuuyxyz-bigboi
           ./users/yattaro/user-config.nix
           ./modules/common-packages.nix
+          ./modules/services/bnuuyxyz-web.nix
           # lix-module.nixosModules.default
         ];
       };
