@@ -1,0 +1,17 @@
+photos.bnuuy.xyz, photos-new.bnuuy.xyz {
+  reverse_proxy 127.0.0.1:4096
+}
+
+bnuuy.xyz, www.bnuuy.xyz {
+  log {
+    output file /var/www/bnuuy.xyz/access.log
+  }
+  encode
+  rewrite /mcmap /mcmap/
+  route /mcmap/* {
+    uri strip_prefix /mcmap
+    reverse_proxy 172.24.10.2:8227
+  }
+  root * /var/www/bnuuy.xyz/public_html/
+  file_server
+}

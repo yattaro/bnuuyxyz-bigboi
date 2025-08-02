@@ -12,14 +12,6 @@
   ];
   services.caddy = {
     enable = true;
-    configFile = pkgs.writeText "Caddyfile" ''
-    photos-new.bnuuy.xyz {
-      reverse_proxy 127.0.0.1:4096
-    }
-
-    photos.bnuuy.xyz {
-      reverse_proxy 127.0.0.1:4096
-    }
-    '';
+    configFile = ./Caddyfile;
   };
 }

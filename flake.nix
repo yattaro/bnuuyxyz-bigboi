@@ -18,6 +18,7 @@
           ./users/yattaro/user-config.nix
           ./modules/common-packages.nix
           ./modules/services/bnuuyxyz-web.nix
+          ./modules/services/wireguard-bnuuy.nix
           # lix-module.nixosModules.default
         ];
       };
