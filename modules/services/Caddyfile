@@ -12,6 +12,9 @@ bnuuy.xyz, www.bnuuy.xyz {
     uri strip_prefix /mcmap
     reverse_proxy 172.24.10.2:8227
   }
+  route /_matrix/* {
+    reverse_proxy 127.0.0.1:6167
+  }
   root * /var/www/bnuuy.xyz/public_html/
   file_server
 }

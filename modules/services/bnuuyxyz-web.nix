@@ -14,4 +14,11 @@
     enable = true;
     configFile = ./Caddyfile;
   };
+  services.matrix-conduit = {
+    enable = true;
+    settings.global = {
+      address = "127.0.0.1";
+      server_name = "bnuuy.xyz";
+    };
+  };
 }
