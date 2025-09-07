@@ -15,6 +15,9 @@ bnuuy.xyz, www.bnuuy.xyz {
   route /_matrix/* {
     reverse_proxy 127.0.0.1:6167
   }
+  route /.well-known/matrix/* {
+    reverse_proxy 127.0.0.1:6167
+  }
   root * /var/www/bnuuy.xyz/public_html/
   file_server
 }

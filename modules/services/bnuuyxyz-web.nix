@@ -20,6 +20,10 @@
     settings.global = {
       address = "127.0.0.1";
       server_name = "bnuuy.xyz";
+      well_known = {
+        server = "bnuuy.xyz:443";
+        client = "https://bnuuy.xyz";
+      };
     };
   };
 }
