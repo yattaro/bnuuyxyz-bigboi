@@ -3,6 +3,7 @@
   networking.firewall.allowedTCPPorts = [
     80
     443
+    8448 # matrix federation
   ];
 
   # piwigo currently lives in docker until I can figure out how to deploy it un-fucked on nix
