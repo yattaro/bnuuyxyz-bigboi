@@ -26,4 +26,26 @@
       };
     };
   };
+
+  # handle backups
+  systemd.timers."web-backup" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      Unit = "web-backup.service";
+    };
+  };
+  systemd.services."web-backup" = {
+    path = [ pkgs.openssh pkgs.rsync ];
+    script = ''
+      set -eu
+      rsync -azXPv /var/lib/piwigo/ bnuuyxyz-backup-worker@172.24.10.2:~/bnuuyxyz-backup/piwigo/
+      rsync -azXPv /var/www/ bnuuyxyz-backup-worker@172.24.10.2:~/bnuuyxyz-backup/www/
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
+  };
 }
