@@ -1,4 +1,8 @@
-photos.bnuuy.xyz, photos-new.bnuuy.xyz {
+photos.bnuuy.xyz {
+  redir https://junephotos.com{uri} permanent
+}
+
+www.junephotos.com, junephotos.com {
   reverse_proxy 127.0.0.1:4096
 }
 
