@@ -1,0 +1,39 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    volumes:
+      - /var/lib/piwigo/mysql:/var/lib/mysql
+      - /var/lib/piwigo/mysql-backup:/backup
+    environment:
+      - TZ=America/New_York
+      - MARIADB_ROOT_PASSWORD=
+      - MARIADB_DATABASE=
+      - MARIADB_USER=
+      - MARIADB_PASSWORD=
+    restart: unless-stopped
+    networks:
+      - piwigo-bridge
+
+  piwigo:
+    image: lscr.io/linuxserver/piwigo:16.2.0
+    container_name: piwigo
+    depends_on:
+      - mariadb
+    environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=America/New_York
+    volumes:
+      - /var/lib/piwigo/piwigo_config:/config
+      - /var/lib/piwigo/piwigo_gallery:/gallery
+    ports:
+      - 4096:80
+    restart: unless-stopped
+    networks:
+      - piwigo-bridge
+
+networks:
+  piwigo-bridge:
+    driver: bridge
+
