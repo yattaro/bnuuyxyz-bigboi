@@ -24,6 +24,14 @@
         server = "bnuuy.xyz:443";
         client = "https://bnuuy.xyz";
       };
+      media.backend = "filesystem";
+      media.retention = [
+        {
+          space = "40G";
+          accessed = "1y";
+          created = "1y";
+        }
+      ];
     };
   };
 
